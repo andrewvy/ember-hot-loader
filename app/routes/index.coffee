@@ -14,6 +14,6 @@ module.exports = Ember.Route.extend
         nine: 'ten'
       }
     ]
-  # setupController: (controller, model) ->
-  #   controller.set 'model', model
-  #   console.log 'index route'
+  setupController: (controller, model) ->
+    controller.set 'model', model
+    console.log 'index route'

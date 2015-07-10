@@ -22,19 +22,24 @@ module.exports = function(grunt) {
         debug: true
       }
     },
-    // "webpack-dev-server": {
-    //   options: {
-    //     webpack: webpackConfig,
-    //     publicPath: "/" + webpackConfig.output.publicPath
-    //   },
-    //   start: {
-    //     keepAlive: true,
-    //     webpack: {
-    //       devtool: "eval",
-    //       debug: true
-    //     }
-    //   }
-    // },
+    "webpack-dev-server": {
+       options: {
+         webpack: webpackConfig,
+         hot: true,
+	 host: "localhost",
+         inline: true,
+	 proxy: {
+           "*": "http://localhost:9090"
+         }
+       },
+       start: {
+         keepAlive: true,
+         webpack: {
+         devtool: "eval",
+         debug: true
+        }
+      }
+    },
     watch: {
       app: {
         files: ["app/**/*", "web_modules/**/*"],
@@ -47,8 +52,7 @@ module.exports = function(grunt) {
   });
 
   // The development server (the recommended option for development)
-  // grunt.registerTask("default", ["webpack-dev-server:start"]);
-  grunt.registerTask("default", ["dev"]);
+  grunt.registerTask("default", ["webpack-dev-server:start"]);
 
   // Build and watch cycle (another option for development)
   // Advantage: No server required, can run app from filesystem

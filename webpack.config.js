@@ -100,6 +100,7 @@ var plugins = function(opts) {
   // plugins.push(new webpack.IgnorePlugin(/canvas/));
   plugins.push(new ExtractTextPlugin("app.css", { allChunks: true }));
   plugins.push(new webpack.DefinePlugin(options.define));
+  plugins.push(new webpack.HotModuleReplacementPlugin());
   if (options.production) {
     plugins.push(new webpack.optimize.UglifyJsPlugin());
     plugins.push(new webpack.optimize.OccurenceOrderPlugin());
