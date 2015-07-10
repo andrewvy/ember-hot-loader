@@ -35,5 +35,10 @@
     "webpack": "^1.5.3",
     "webpack-dev-server": "^1.7.0",
     "yaml-loader": "^0.1.0"
+  },
+  "devDependencies": {
+    "css-loader": "^0.9.1",
+    "style-loader": "^0.8.3",
+    "webpack": "^1.10.1"
   }
 }
