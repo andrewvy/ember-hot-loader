@@ -7,11 +7,11 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 var common = {
   module: {
-    // handle packages that need brfs processing.
-    postLoaders: [
-      { test: /app\/register\.js$/, loader: 'transform/cacheable?require-globify' }
-    ],
     loaders: [
+
+      // ember handlebars
+      { test: /\.hbs$/, loader: 'handlebars-loader' },
+
       // loader for es6
       { test: /app\/[^\/]+\/.+\.js$/, loader: 'babel' },
 
@@ -46,8 +46,6 @@ var common = {
       // compiles less.
       // { test: /\.css$/, loader: ExtractTextPlugin.extract("style", "css") },
 
-      // ember handlebars
-      { test: /\.hbs$/, loader: 'ember-templates' },
 
       // compiles coffeescript.
       { test: /\.coffee$/, loader: 'coffee' }
@@ -77,6 +75,9 @@ var common = {
   devServer: {
     contentBase: "./build",
     lazy: true
+  },
+  emberTemplatesLoader: {
+    compiler: 'ember/ember-templates-compiler'
   }
 };
 
@@ -89,7 +90,7 @@ var plugins = function(opts) {
   }, opts);
   var plugins = [];
   plugins.push(
-    new webpack.ResolverPlugin(new webpack.ResolverPlugin.DirectoryDescriptionFilePlugin('bower.json', ['main']))
+    new webpack.ResolverPlugin(new webpack.ResolverPlugin.DirectoryDescriptionFilePlugin('bower.json', ['app']))
   );
   plugins.push(new webpack.ProvidePlugin({
     'window.jQuery': 'jquery',
@@ -112,7 +113,7 @@ module.exports = [
   extend(true, {}, common, {
     name: 'app',
     target: 'web',
-    entry: path.resolve('app/main.coffee'),
+    entry: path.resolve('app/app.coffee'),
     output: {
       path: path.resolve(dist),
       filename: 'app.js'

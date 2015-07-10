@@ -1,8 +1,6 @@
 Ember = require 'ember'
 
-class App extends Ember.Application
+require 'public/index.html'
 
-register = require './register'
-register(App)
-
-module.exports = App
+HMRApp = Ember.Application.create()
+HMRApp.ApplicationView = require './views/application'

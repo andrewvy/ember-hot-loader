@@ -28,9 +28,6 @@ module.exports = function(grunt) {
          hot: true,
 	 host: "localhost",
          inline: true,
-	 proxy: {
-           "*": "http://localhost:9090"
-         }
        },
        start: {
          keepAlive: true,

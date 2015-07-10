@@ -1,8 +1,9 @@
 Ember = require 'ember'
 
 AppRouter = Ember.Router.extend({
-  init: ->
-    @_super()
 })
+
+AppRouter.map ->
+	@route 'index'
 
 module.exports = AppRouter
