@@ -39,6 +39,7 @@
   },
   "devDependencies": {
     "css-loader": "^0.9.1",
+    "ember-webpack-resolver": "^0.3.1",
     "style-loader": "^0.8.3",
     "webpack": "^1.10.1"
   }

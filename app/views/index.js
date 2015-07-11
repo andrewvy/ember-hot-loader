@@ -1,6 +1,5 @@
-(function() {
-	App.IndexView = Ember.View.extend({
-		templateName: "index",
-		name: "HMR"
-	});
-})()
+let view = Ember.View.create({
+	template: 'index'
+});
+
+module.exports = view

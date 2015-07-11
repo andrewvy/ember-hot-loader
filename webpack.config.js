@@ -10,7 +10,7 @@ var common = {
     loaders: [
 
       // ember handlebars
-      { test: /\.hbs$/, loader: 'handlebars-loader' },
+      { test: /\.(hbs|handlebars)$/, loader: 'handlebars-loader' },
 
       // loader for es6
       { test: /app\/[^\/]+\/.+\.js$/, loader: 'babel' },
@@ -120,7 +120,7 @@ module.exports = [
     'app/app.coffee'
     ],
     output: {
-      path: path.resolve('build'),
+      path: path.resolve('/build'),
     },
     plugins: plugins({
       define: {
