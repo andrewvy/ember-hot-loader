@@ -1,6 +1,10 @@
+module.hot.accept()
+
 Ember = require 'ember'
 
-require 'public/index.html'
+require './stylesheets/style.css'
 
-HMRApp = Ember.Application.create()
-HMRApp.ApplicationView = require './views/application'
+unless window.App
+	window.App = new Ember.Application()
+	window.App.register('ApplicationTemplate', require('./templates/application'))
+

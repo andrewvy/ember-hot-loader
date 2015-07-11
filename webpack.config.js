@@ -46,6 +46,7 @@ var common = {
       // compiles less.
       // { test: /\.css$/, loader: ExtractTextPlugin.extract("style", "css") },
 
+      { test: /\.css$/, loader: "style!css" },
 
       // compiles coffeescript.
       { test: /\.coffee$/, loader: 'coffee' }
@@ -78,7 +79,8 @@ var common = {
   },
   emberTemplatesLoader: {
     compiler: 'ember/ember-templates-compiler'
-  }
+  },
+
 };
 
 var plugins = function(opts) {
@@ -113,10 +115,12 @@ module.exports = [
   extend(true, {}, common, {
     name: 'app',
     target: 'web',
-    entry: path.resolve('app/app.coffee'),
+    entry: [
+    'webpack/hot/only-dev-server',
+    'app/app.coffee'
+    ],
     output: {
-      path: path.resolve(dist),
-      filename: 'app.js'
+      path: path.resolve('build'),
     },
     plugins: plugins({
       define: {

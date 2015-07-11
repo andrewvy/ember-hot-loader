@@ -1,4 +1,4 @@
-let ApplicationView = Ember.View.extend({
+var ApplicationView = Ember.View.extend({
 	template: require('../templates/application.hbs')
 });
 
